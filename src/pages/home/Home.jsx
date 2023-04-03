@@ -13,7 +13,7 @@ export function Home() {
   };
   useEffect(()=>{
     getMessage()
-  },[localStorage.getItem("@AsyncStorage:token"),])
+  },[localStorage.getItem("token"),])
   return (
     <HomeStyle>
       Você está na homepage

@@ -3,17 +3,17 @@ import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { LoginStyle } from "./styles/LoginStyle";
 import { authLogin } from "../../../config/server";
-import { AsyncStorage } from 'AsyncStorage';
+import { AsyncStorage } from "AsyncStorage";
 
 export function Login() {
   const { register, handleSubmit } = useForm();
-  const navigateTo = useNavigate()
+  const navigateTo = useNavigate();
   const handleFormSubmit = (data) => {
     authLogin(data)
       .then(async (res) => {
         await AsyncStorage.setItem("token", res.data.token);
         console.log(res.data.token);
-        navigateTo("/home")
+        navigateTo("/home");
       })
       .catch((res) => {
         setErrorMessage(res.response.data.msg);
