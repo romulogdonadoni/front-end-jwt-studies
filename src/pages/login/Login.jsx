@@ -13,7 +13,7 @@ export function Login() {
       .then(async (res) => {
         await AsyncStorage.setItem("token", res.data.token);
         console.log(res.data.token);
-        navigateTo("/")
+        navigateTo("/home")
       })
       .catch((res) => {
         setErrorMessage(res.response.data.msg);
