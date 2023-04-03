@@ -11,7 +11,6 @@ export const GlobalStyle = createGlobalStyle`
 body{
     display: flex;
     height: 100vh;
-
     justify-content: center;
 }
 ` 

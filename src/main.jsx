@@ -1,14 +1,33 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { App } from "./App";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { GlobalStyle } from "../GlobalStyle";
-
-const queryClient = new QueryClient();
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Login } from "./pages/login/Login";
+import { Register } from "./pages/register/Register";
+import { Home } from "./pages/home/Home";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    children: [
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/home",
+        element: <Home />,
+      },
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <QueryClientProvider client={queryClient}>
-    <GlobalStyle/>
+  <RouterProvider router={router}>
     <App />
-  </QueryClientProvider>
+  </RouterProvider>
 );
