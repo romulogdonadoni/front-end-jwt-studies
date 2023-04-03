@@ -2,7 +2,7 @@ import axios from "axios";
 import { AsyncStorage } from "AsyncStorage";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3333",
+  baseURL: "https://app-estudo-back-end.onrender.com",
   headers: {
     "Content-Type": "application/json",
   },
