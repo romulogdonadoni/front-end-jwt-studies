@@ -1,16 +1,18 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { NavLink } from "react-router-dom";
-import { authLogin } from "../../../config/server";
+import { authRegister } from "../../../config/server";
 import { RegisterStyle } from "./styles/Register";
 
 export function Register() {
   const { register, handleSubmit } = useForm();
+  const navigateTo = useNavigate();
   const handleFormSubmit = (data) => {
-    authLogin(data)
-      .then((res) => {
+    authRegister(data)
+      .then(async (res) => {
+        await AsyncStorage.setItem("token", res.data.token);
         console.log(res.data.token);
-        localStorage.setItem("token", res.data.token);
+        navigateTo("/login");
       })
       .catch((res) => {
         setErrorMessage(res.response.data.msg);

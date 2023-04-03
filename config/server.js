@@ -12,7 +12,9 @@ const axiosInstance = axios.create({
 export const authLogin = (loginData) => {
   return axiosInstance.post("/auth/login", loginData);
 };
-
+export const authRegister = (registerData) => {
+  return axiosInstance.post("/auth/register", registerData);
+};
 export const homeInfo = async () => {
   const token = await AsyncStorage.getItem("token");
   return axiosInstance.get("/homepage", {
